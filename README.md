@@ -4,7 +4,7 @@ ReviewLens is a Python web application that explores what restaurant reviews say
 
 ## Academic context
 
-This project was developed as a group assignment for an academic subject during the authors' MSc Computer Science studies. It demonstrates an end-to-end workflow involving NLP, structured data, XML schema validation, and web development. It is an educational prototype; no custom sentiment model was trained and no benchmark accuracy is claimed.
+This project was developed as a group assignment for an academic subject during MSc Computer Science studies. It demonstrates an end-to-end workflow involving NLP, structured data, XML schema validation, and web development. It is an educational prototype; no custom sentiment model was trained and no benchmark accuracy is claimed.
 
 ### Authors
 
