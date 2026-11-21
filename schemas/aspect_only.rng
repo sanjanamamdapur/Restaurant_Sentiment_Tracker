@@ -1,0 +1,16 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+
+ <!-- This schema defines a single 'aspect' element structure -->
+  <start>
+    <element name="aspect">
+    <!-- Each 'aspect' must have a 'type' attribute (e.g., 'food', 'service') -->
+      <attribute name="name"/>
+      <!-- Each 'aspect' contains a sentiment child element -->
+      <element name="sentiment">
+      <!-- Sentiment text content (e.g., positive/negative/neutral) -->
+        <attribute name="score"/>
+        <text/>
+      </element>
+    </element>
+  </start>
+</grammar>

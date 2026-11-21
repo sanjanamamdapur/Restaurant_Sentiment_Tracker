@@ -1,0 +1,24 @@
+# Local environments, editor settings, and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.cache/
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+
+# Downloaded reviews and generated analysis artifacts
+Datasets/*
+!Datasets/demo_reviews.csv
+*.db
+*.db-*
+restaurant_sentiments.xml
+restaurant_aspect_sentiments.csv
+cleaned_restaurant_reviews.csv
+scripts/*.xlsx
+
+# Academic presentation (kept locally)
+RestaurantSentimentTracker_ReviewLens.pdf

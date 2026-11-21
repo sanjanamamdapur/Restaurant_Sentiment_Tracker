@@ -1,0 +1,34 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+ <!-- Full schema describing restaurant data including location and aspect sentiments -->
+  <start>
+    <element name="restaurantSentiments">
+    <!-- Restaurant can contain multiple 'aspect' entries -->
+      <zeroOrMore>
+        <ref name="restaurant"/>
+      </zeroOrMore>
+    </element>
+  </start>
+
+  <define name="restaurant">
+    <element name="restaurant">
+     <!-- Attributes: name and location of the restaurant -->
+      <attribute name="name"/>
+      <attribute name="location"/>
+      <zeroOrMore>
+        <ref name="aspect"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="aspect">
+    <element name="aspect">
+      <attribute name="name"/>
+      <!-- Sentiment expressed toward the aspect -->
+      <element name="sentiment">
+        <attribute name="score"/>
+        <text/>
+      </element>
+    </element>
+  </define>
+
+</grammar>

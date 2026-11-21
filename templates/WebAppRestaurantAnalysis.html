@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Sentiment Tracker</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    /* Customize Plotly bar chart appearance */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    h2 {
+      color: #333;
+    }
+    .search-box {
+      margin-bottom: 20px;
+    }
+    label {
+      margin-right: 15px;
+    }
+    input, select {
+      padding: 6px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 6px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    #plot {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🍽️ Restaurant Aspect-Based Sentiment Tracker</h2>
+
+  <form method="post" class="search-box">
+    <label>Aspect: <input type="text" name="aspect" placeholder="e.g. food, service"></label>
+    <label>Location: <input type="text" name="location" placeholder="e.g. Bangalore"></label>
+    <label>Sentiment:
+      <select name="sentiment">
+        <option value="">All</option>
+        <option value="positive">Positive</option>
+        <option value="negative">Negative</option>
+        <option value="neutral">Neutral</option>
+      </select>
+    </label>
+    <button type="submit">Search</button>
+  </form>
+
+  {% if results %}
+    <table>
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Location</th>
+          <th>Aspect</th>
+          <th>Sentiment</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in results %}
+        <tr>
+          <td>{{ row.restaurant }}</td>
+          <td>{{ row.location }}</td>
+          <td>{{ row.aspect }}</td>
+          <td>{{ row.sentiment }}</td>
+          <td>{{ row.sentiment_score }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% elif results is not none %}
+    <p>No results found.</p>
+  {% endif %}
+
+  {% if graphJSON %}
+    <div id="plot"></div>
+    <script>
+      var graphs = {{ graphJSON | safe }};
+      Plotly.newPlot('plot', graphs.data, graphs.layout);
+    </script>
+  {% endif %}
+
+</body>
+</html>

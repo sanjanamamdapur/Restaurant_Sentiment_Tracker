@@ -1,0 +1,25 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+<!-- This schema defines a 'restaurant' element with one or more aspects -->
+  <start>
+    <element name="restaurant">
+    <!-- 'name' attribute represents the restaurant name -->
+      <attribute name="name"/>
+      <attribute name="location"/>
+       <!-- A restaurant contains zero or more 'aspect' elements -->
+      <zeroOrMore>
+        <ref name="aspect"/>
+      </zeroOrMore>
+    </element>
+  </start>
+
+  <define name="aspect">
+    <element name="aspect">
+      <attribute name="name"/>
+      <element name="sentiment">
+        <attribute name="score"/>
+        <text/>
+      </element>
+    </element>
+  </define>
+
+</grammar>
